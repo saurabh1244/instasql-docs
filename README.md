@@ -18,7 +18,7 @@ No SQL knowledge. No syntax stress. Just type what you need — and InstaSQL tra
 
 This system sits between your **database** and your **data analyst**, converting natural language to SQL in real-time and executing it securely through an **async FastAPI backend**.
 
-It’s designed to be:
+It's designed to be:
 - ⚙️ **Lightweight** (single VPS deployable)  
 - 🧠 **AI-intelligent** (powered by Gemini 2.5 Flash)  
 - 🔐 **Secure by default** (JWT + OAuth + CSRF-safe APIs)  
@@ -76,11 +76,11 @@ From marketing teams pulling reports to developers debugging production data —
 
 ```mermaid
 flowchart LR
-    UI[Frontend (React/Vue)] --> API[FastAPI Backend]
-    API --> DB[(Database: MySQL/SQLite)]
+    UI[Frontend] --> API[FastAPI Backend]
+    API --> DB[(Database)]
     API --> AI[Gemini AI Engine]
     API --> Mail[Email Automation]
-    UI --> Auth[OAuth (Google/GitHub)]
+    UI --> Auth[OAuth Provider]
 
     subgraph DevOps [DevOps & Deployment]
         Docker[Docker]
@@ -90,4 +90,3 @@ flowchart LR
 
     API --> Docker
     Docker --> VPS
-
