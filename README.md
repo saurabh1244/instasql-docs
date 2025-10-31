@@ -75,16 +75,19 @@ From marketing teams pulling reports to developers debugging production data —
 ## 🏗️ System Architecture
 
 ```mermaid
-flowchart TD
-    User[User Interface (React/Vue)] -->|REST/WS API| FastAPI[FastAPI Backend]
-    FastAPI -->|Async ORM| DB[(MySQL / SQLite)]
-    FastAPI --> AI[Gemini 2.5 Flash AI Engine]
-    FastAPI --> Email[SendGrid / Resend Email Service]
-    User --> OAuth[Google / GitHub OAuth2]
-    subgraph DevOps Layer
-        Docker[Docker Containers]
-        CICD[GitHub Actions CI/CD]
-        VPS[VPS Deployment (Ubuntu)]
+flowchart LR
+    UI[Frontend (React/Vue)] --> API[FastAPI Backend]
+    API --> DB[(Database: MySQL/SQLite)]
+    API --> AI[Gemini AI Engine]
+    API --> Mail[Email Automation]
+    UI --> Auth[OAuth (Google/GitHub)]
+
+    subgraph DevOps [DevOps & Deployment]
+        Docker[Docker]
+        CI[GitHub Actions]
+        VPS[VPS Server]
     end
-    FastAPI --> Docker
+
+    API --> Docker
     Docker --> VPS
+
